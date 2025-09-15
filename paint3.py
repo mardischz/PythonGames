@@ -7,10 +7,10 @@ Exercises
 3. Complete rectangle.
 4. Complete triangle.
 5. Add width parameter.
+6. it work??
 """
 
 from turtle import *
-
 from freegames import vector
 
 
