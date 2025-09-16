@@ -2,17 +2,17 @@
 
 Exercises
 
-1. Add a color.
+1. Add a color. /
 2. Complete circle.
 3. Complete rectangle.
-4. Complete triangle.
+4. Complete triangle. 
 5. Add width parameter.
 6. it work??
 """
 
 from turtle import *
 from freegames import vector
-
+import math
 
 def line(start, end):
     """Draw line from start to end."""
@@ -48,7 +48,15 @@ def rectangle(start, end):
 
 def triangle(start, end):
     """Draw triangle from start to end."""
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(3):
+        forward(end.x - start.x)
+        left(120)
+    end_fill()
 
 
 def tap(x, y):

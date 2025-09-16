@@ -1,0 +1,64 @@
+import pygame
+import sys
+
+# Inicializar pygame
+pygame.init()
+
+# Dimensiones de la ventana
+WIDTH, HEIGHT = 600, 400
+window = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Snake Game")
+
+# Colores
+BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
+WHITE = (255, 255, 255)
+
+# Fuente
+font = pygame.font.SysFont("Arial", 36)
+
+def show_start_screen():
+    window.fill(BLACK)
+
+    title_text = font.render("🐍 Snake Game 🐍", True, GREEN)
+    start_text = font.render("Press SPACE to Start", True, WHITE)
+    quit_text = font.render("Press Q to Quit", True, WHITE)
+
+    # Centrar textos
+    window.blit(title_text, (WIDTH//2 - title_text.get_width()//2, 100))
+    window.blit(start_text, (WIDTH//2 - start_text.get_width()//2, 200))
+    window.blit(quit_text, (WIDTH//2 - quit_text.get_width()//2, 250))
+
+    pygame.display.flip()
+
+    # Esperar input
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:  # iniciar
+                    waiting = False
+                elif event.key == pygame.K_q:  # salir
+                    pygame.quit()
+                    sys.exit()
+
+def main_game():
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        window.fill(BLACK)
+        text = font.render("Aquí va el juego de Snake 🐍", True, GREEN)
+        window.blit(text, (WIDTH//2 - text.get_width()//2, HEIGHT//2))
+        pygame.display.flip()
+
+    pygame.quit()
+
+# Ejecutar
+show_start_screen()
+main_game()
